@@ -1,0 +1,6 @@
+1. Displaying Ui
+2. Create a variables that will display time and dates
+3. Create a function that will be responsible displaying current weather conditions
+4. Create a Function that will get weather conditions for weather conditions of other locations
+5. Create a functions that will  get daily weather conditions
+6.
