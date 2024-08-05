@@ -1,0 +1,16 @@
+//Initialize variable to get user input in search bar
+SET getCity = document.getElementById
+
+//Initialize variables display current time and dates
+SET day = access the element by id set in HTML
+SET time = access the element by id set in HTML
+SET month = access the element by id set in HTML
+
+//Create function to get API for user's current locations
+function getLocation(){}
+
+//Create function to search weather conditions for the place that the usser searches for
+function getCity(){}
+
+//Create a function that will get icons for the weather conditions for the city that the users seaerches for
+function displayIcon = get the html elemnt that displays the weather icon

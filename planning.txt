@@ -1,6 +1,10 @@
-1. Displaying Ui
+1. Displaying UI
 2. Create a variables that will display time and dates
-3. Create a function that will be responsible displaying current weather conditions
-4. Create a Function that will get weather conditions for weather conditions of other locations
-5. Create a functions that will  get daily weather conditions
-6.
+3. Get user's notification as soon as the open the app.
+4. Create a function that will be responsible displaying current weather conditions
+5. Create a Function that will get weather conditions for weather conditions of other locations
+6. Create a functions that will  get daily weather conditions
+7.Function to switch between celsius and fahrenheit temperature
+8.Add button to switch between dark and light theme.
+9. Get user's notification as soon as the open the app.
+10. Add local storage to allow user to access info while offline.
