@@ -7,7 +7,7 @@ function Main(){
         <h1>Weather App</h1>
         <button>Switch Theme</button>
         <div class="grid h-full w-full grid-cols-2 gap-2 rounded-[12px]">
-            <div class="bg-gray-200 rounded-[12px] h-full">
+            <div class="left rounded-[12px] h-full">
                 <form>
         <input class="search-input" type="text" placeholder="Search"/><br/>
         <button>Search</button>
@@ -19,7 +19,7 @@ function Main(){
         <div>Mostly Cloudy</div>
         <div>Rain</div>
   </div>
-  <div class="bg-gray-400 rounded-[12px] h-full">
+  <div class="right rounded-[12px] h-full">
     Days of the week
     <div class="grid grid-cols-6 gap-4 ">
         <div class="bg-white rounded-[12px]">
