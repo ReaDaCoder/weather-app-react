@@ -17,33 +17,14 @@ function Main(){
   </div>
   <div class="bg-gray-400 rounded-[12px] h-full">
     Days of the week
-    <div class="col-span-2 row-span-3 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                tue
-                </div>
-            <div class="col-span-2 row-span-3 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                wed
-                </div>
-            <div class="col-span-2 row-span-3 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                Thurs
-                </div>
-                <div class="col-span-2 row-span-3 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                Fri
-                </div>
-            <div class="col-span-2 row-span-3 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                Sat
-                </div>
-            <div class="col-span-2 row-span-3 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                Sun
-                </div>
-            <div class="col-span-3 row-span-4 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                humidity
-                </div>
-            <div class="col-span-3 row-span-4 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                Visibility
-                </div>
-            <div class="col-span-3 row-span-4 bg-indigo-200 rounded-[12px] flex justify-center items-center">
-                Air quality
-                </div>
+    <div class="grid grid-cols-6 gap-4 ">
+        <div class="">Tue</div>
+        <div >Wed</div>
+        <div>Thurs</div>
+        <div>Fri</div>
+        <div>Sat</div>
+        <div>Sun</div>
+</div>
   </div>
 </div>
     </div>);
