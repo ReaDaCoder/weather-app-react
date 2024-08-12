@@ -3,11 +3,15 @@ import { useState } from "react";
 
 function Main(){
     const [days, setDays] = useState("")
+    const [time, setTime] = useState("");
     const [apiUrl, setApiUrl] = useState("http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=no");
     const searchCity = (response) =>{
         let getInput = document.querySelector(".search-input");
         let h2 = document.querySelector(h2);
         h2.innerHTML = `${getInput.value}`;
+    }
+    const currentLocation =(response) =>{
+        
     }
     return(
     <div className="w-full items-center justify-center p-6">
