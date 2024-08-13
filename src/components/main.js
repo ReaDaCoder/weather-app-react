@@ -6,7 +6,7 @@ function Main(){
     let hour = now.getHours();
     let minutes = now.getMinutes();
     let days = ["Sunday","Monday", "Tuesday", "Wednsday", "Friday", "Saturday"];
-    let currentDay = days[now.getInputDay()];
+    let currentDay = days[now.getInput()];
     let date = document.getElementById('date');
      date.innerHTML = `${currentDay}, ${hour}:${minutes}`;
 
