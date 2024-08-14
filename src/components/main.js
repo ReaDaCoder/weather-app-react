@@ -10,13 +10,16 @@ function Main(){
     let hour = now.getHours();
     let minutes = now.getMinutes();
     let days = ["Sunday","Monday", "Tuesday", "Wednsday", "Friday", "Saturday"];
-    let currentDay = days[now.getInput()];
+    console.dir(now);
+    
+    let currentDay = days[now.getDay()];
+    console.log(currentDay);
     let date = document.getElementById('date');
      date.innerHTML = `${currentDay}, ${hour}:${minutes}`;
     },[]);
 
 
-    let apiUrl = "http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=no";
+    let apiUrl = "http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes";
     const searchCity = (event) =>{
         event.preventDefault();
         let getInput = document.querySelector(".search-input");
@@ -24,17 +27,19 @@ function Main(){
         setCity(getInput); 
         h2.innerHTML = `${getInput.value}`;
     }
-   /* const currentLocation =(response) =>{
-        let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let units = "metric";
-  let apiKey = "64469ac67e6dc941feb5b50915a18dc7";
-  let apiPoint = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${apiPoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(giveTemperature);
+    const currentLocation =(response) =>{
+        let latitude = response.location.lat;
+  let longitude = response.location.lon;
+  let apiKey = "58ba20b08f854e3da23163958241108";
+  let apiPoint = "http://api.weatherapi.com/v1/current.json";
+  let apiUrl = `${apiPoint}?key=${apiKey}&q=${latitude},${longitude}`;
+//"http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=-25.75,28.19"
+  axios.get(apiUrl);
     }
-    navigator.geolocation.getCurrentPosition(getPosition);*/
+    console.log(currentLocation);
+    navigator.geolocation.getCurrentPosition(currentLocation);
+
     return(
     <div className="w-full items-center justify-center p-6">
         <h1>Weather App</h1>
