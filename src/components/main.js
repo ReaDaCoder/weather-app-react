@@ -24,9 +24,17 @@ function Main(){
         setCity(getInput); 
         h2.innerHTML = `${getInput.value}`;
     }
-    const currentLocation =(response) =>{
-        
+   /* const currentLocation =(response) =>{
+        let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let units = "metric";
+  let apiKey = "64469ac67e6dc941feb5b50915a18dc7";
+  let apiPoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiUrl = `${apiPoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(giveTemperature);
     }
+    navigator.geolocation.getCurrentPosition(getPosition);*/
     return(
     <div className="w-full items-center justify-center p-6">
         <h1>Weather App</h1>
