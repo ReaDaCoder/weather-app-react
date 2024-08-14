@@ -60,6 +60,7 @@ function Main(){
   </div>
   <div class="right rounded-[12px] h-full">
     Days of the week
+    <button>Fahrenheit/Celsius</button>
     <div class="grid grid-cols-6 gap-4 ">
         <div class="bg-white rounded-[12px]">
             Tue
