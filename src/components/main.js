@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
 
 function Main(){
-    let now = new Date();
+    const [currentDay, setCurrentDay] = useState('');
+    const [time, setTime] = useState('');
+    const [city, setCity] = useState('Pretoria');
+    useEffect(()=>{
+        let now = new Date();
     let hour = now.getHours();
     let minutes = now.getMinutes();
     let days = ["Sunday","Monday", "Tuesday", "Wednsday", "Friday", "Saturday"];
     let currentDay = days[now.getInput()];
     let date = document.getElementById('date');
      date.innerHTML = `${currentDay}, ${hour}:${minutes}`;
+    },[]);
+
 
     let apiUrl = "http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=no";
-    const searchCity = (response) =>{
+    const searchCity = (event) =>{
+        event.preventDefault();
         let getInput = document.querySelector(".search-input");
         let h2 = document.querySelector(h2);
+        setCity(getInput); 
         h2.innerHTML = `${getInput.value}`;
     }
     const currentLocation =(response) =>{
