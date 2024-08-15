@@ -56,6 +56,12 @@ form.addEventListener("submit", search);
     }
     navigator.geolocation.getCurrentPosition(currentLocation);
 
+    const dailyForecast=(response)=>{
+        let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#forecast");
+    }
+
     return(
     <div className="w-full items-center justify-center p-6">
         <h1>Weather App</h1>
@@ -111,9 +117,11 @@ form.addEventListener("submit", search);
         </div>
         <div class="grid grid-cols-3 gap-4">
 
-  <div>Humidity</div>
-  <div>Visibility</div>
-  <div>Air Quality</div>
+  <div>Humidity
+    <div class="humidity"></div>
+  </div>
+  <div class="visibility">Visibility</div>
+  <div class="air-quality">Air Quality</div>
 </div>
         </div>
     </div>);
