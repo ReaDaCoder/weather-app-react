@@ -53,7 +53,7 @@ let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da231639
     }
     axios.get(`${url}`).then(currentLocation);
 
-    const searchCity = (event) =>{
+    const searchButton = (event) =>{
         event.preventDefault();
         let userInput = document.querySelector("#search-input")
         let h2 = document.querySelector("#city");
@@ -62,7 +62,7 @@ let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da231639
         getCity(getInput.value);
     }
     let form = document.querySelector("#search-form");
-form.addEventListener("submit", searchCity);
+form.addEventListener("submit", searchButton);
 
     const dailyForecast=(response)=>{
         let forecast = response.data.daily;
