@@ -45,13 +45,14 @@ form.addEventListener("submit", search);
         let latitude = response.location.lat;
         console.log(latitude);
   let longitude = response.location.lon;
+  console.log(longitude);
   let apiKey = "58ba20b08f854e3da23163958241108";
   let apiPoint = "http://api.weatherapi.com/v1/current.json";
   let apiUrl = `${apiPoint}?key=${apiKey}&q=${latitude},${longitude}`;
 
   let currentTemperature = document.querySelector(".weather-temperature");
   currentTemperature.innerHTML = response.current.temp_c;
-
+console.log(currentLocation);
 //"http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=-25.75,28.19"
     }
     navigator.geolocation.getCurrentPosition(currentLocation);
