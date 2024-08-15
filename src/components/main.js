@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from "react";
+import Dark from './Dark';
+import Fahrenheit from './Fahrenheit';
 
 function Main(){
     const [currentDay, setCurrentDay] = useState('');
@@ -67,7 +69,7 @@ form.addEventListener("submit", searchCity);
     return(
     <div className="w-full items-center justify-center p-6">
         <h1>Weather App</h1>
-        <button>Switch Theme</button>
+        <Dark/>
         <div class="grid h-full w-full grid-cols-2 gap-2 rounded-[12px]">
             <div class="left rounded-[12px] h-full">
                 <form id="search-form">
