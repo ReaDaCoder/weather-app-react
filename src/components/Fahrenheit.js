@@ -2,7 +2,7 @@ import React from 'react';
 
 function Fahrenheit(){
 
-  let celsiusTemp = null;
+  let apiUrl = ""
     function showCelsius(event) {
         event.preventDefault();
         let temperatureElement = document.querySelector(".");
@@ -21,6 +21,8 @@ function Fahrenheit(){
       
       let fahrenheitLink = document.querySelector("#fahrenheit-link");
       fahrenheitLink.addEventListener("click", showFahrenheit);
+
+      let celsiusTemp = "";
 
       return(
         <div className="unit-switch">

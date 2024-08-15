@@ -45,10 +45,12 @@ console.log(currentLocation);
     let getInput = document.querySelector(".search-input");
     let key = "58ba20b08f854e3da23163958241108";
 
-    const getCity = ()=>{
+let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes`;
+    const getCity = (response)=>{
+        console.log(response);
         let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes`;
-        axios.get(`${url}&appid=${key}`).then(currentLocation);
     }
+    axios.get(`${url}`).then(currentLocation);
 
     const searchCity = (event) =>{
         event.preventDefault();
