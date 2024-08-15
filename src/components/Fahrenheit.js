@@ -19,6 +19,12 @@ function Fahrenheit(){
       
       let fahrenheitLink = document.querySelector("#fahrenheit-link");
       fahrenheitLink.addEventListener("click", showFahrenheit);
+
+      return(
+        <div className="unit-switch">
+             <button>Fahrenheit/Celsius</button>
+        </div>
+      )
       
 }
 
