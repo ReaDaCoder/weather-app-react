@@ -22,25 +22,6 @@ function Main(){
 
     let apiUrl = "http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes";
 
-    let getInput = document.querySelector(".search-input");
-    let key = "58ba20b08f854e3da23163958241108";
-
-    const getCity = ()=>{
-        let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=${getInput}&aqi=yes`;
-        axios.get(`${url}&appid=${key}`).then(currentLocation);
-    }
-
-    const searchCity = (event) =>{
-        event.preventDefault();
-        let h2 = document.querySelector(h2);
-        setCity(getInput); 
-        h2.innerHTML = `${getInput.value}`;
-        getCity(input.value);
-    }
-    let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
-
-
     const currentLocation =(response) =>{
         let latitude = response.location.lat;
         console.log(latitude);
@@ -56,6 +37,26 @@ console.log(currentLocation);
 //"http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=-25.75,28.19"
     }
     navigator.geolocation.getCurrentPosition(currentLocation);
+
+
+
+    let getInput = document.querySelector(".search-input");
+    let key = "58ba20b08f854e3da23163958241108";
+
+    const getCity = ()=>{
+        let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes`;
+        axios.get(`${url}&appid=${key}`).then(currentLocation);
+    }
+
+    const searchCity = (event) =>{
+        event.preventDefault();
+        let h2 = document.querySelector(h2);
+        setCity(getInput); 
+        h2.innerHTML = `${getInput.value}`;
+        getCity(getInput.value);
+    }
+    let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchCity);
 
     const dailyForecast=(response)=>{
         let forecast = response.data.daily;
@@ -83,7 +84,7 @@ console.log(currentLocation);
   </div>
   <div className="right rounded-[12px] h-full">
     Days of the week
-    <button>Fahrenheit/Celsius</button>
+    <Fahrenheit/>
     <div className="grid grid-cols-6 gap-4 ">
         <div class="bg-white rounded-[12px]">
             Tue
