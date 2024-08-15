@@ -62,7 +62,7 @@ form.addEventListener("submit", searchCity);
 
     const dailyForecast=(response)=>{
         let forecast = response.data.daily;
-
+        let api = "http://api.weatherapi.com/v1/forecast.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes&days=5";
   let forecastElement = document.querySelector("#forecast");
     }
 
