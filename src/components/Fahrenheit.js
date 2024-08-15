@@ -1,10 +1,12 @@
 import React from 'react';
 
 function Fahrenheit(){
+
+  let celsiusTemp = null;
     function showCelsius(event) {
         event.preventDefault();
         let temperatureElement = document.querySelector(".");
-        temperatureElement.innerHTML = Math.round(celsiusTemperature);
+        temperatureElement.innerHTML = Math.round(celsiusTemp);
       }
       
       let celsius = document.querySelector("#celsuis-link");
@@ -13,7 +15,7 @@ function Fahrenheit(){
       function showFahrenheit(event) {
         event.preventDefault();
         let temperatureElement = document.querySelector(".");
-        let fahrenheitValue = (celsiusTemperature * 9) / 5 + 32;
+        let fahrenheitValue = (celsiusTemp * 9) / 5 + 32;
         temperatureElement.innerHTML = Math.round(fahrenheitValue);
       }
       
@@ -22,7 +24,8 @@ function Fahrenheit(){
 
       return(
         <div className="unit-switch">
-             <button>Fahrenheit/Celsius</button>
+             <button id="fahrenheit-link">Fahrenheit</button>
+             <button id="celsuis-link">Celsius</button>
         </div>
       )
       
