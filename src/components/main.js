@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from "react";
 import Dark from './Dark';
 import Fahrenheit from './Fahrenheit';
+import axios from 'axios';
 
 function Main(){
     const [currentDay, setCurrentDay] = useState('');
