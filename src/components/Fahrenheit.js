@@ -10,7 +10,7 @@ function Fahrenheit(){
       }
       
       let celsius = document.querySelector("#celsuis-link");
-      celsius.addEventListener("click", showCelsius);
+      //celsius.addEventListener("click", showCelsius);
       
       function showFahrenheit(event) {
         event.preventDefault();
@@ -20,7 +20,7 @@ function Fahrenheit(){
       }
       
       let fahrenheitLink = document.querySelector("#fahrenheit-link");
-      fahrenheitLink.addEventListener("click", showFahrenheit);
+      //fahrenheitLink.addEventListener("click", showFahrenheit);
 
       let celsiusTemp = "";
 
