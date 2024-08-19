@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Daily(){
-
+let celsiusTemperature = "";
   const getDaily = (response)=>{
     let forecast = response.data.daily
   }
