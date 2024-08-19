@@ -5,7 +5,8 @@ export default function Daily(){
     let apiUrl = ""
     return(
         <div className="daily">
-            <div className="bg-white rounded-[12px]">
+          <div className="grid grid-cols-6 gap-4 ">
+          <div className="bg-white rounded-[12px]">
             Tue
             <img
                   src="http://openweathermap.org/img/wn/${
@@ -66,6 +67,7 @@ export default function Daily(){
                 />
         <div className="weather-temperature">12</div>
             </div>
+        </div>
         </div>
     )
 }

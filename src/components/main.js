@@ -110,7 +110,12 @@ const updateWeather = (response) =>{
         <div className="main-content">
         <h1>Weather Forecast</h1>
         <h2 id="city"></h2>
-        
+        <img
+                  src="http://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"
+                  class="card-img-top"
+                />
         <div id="weather-temperature">12</div>
         <div id="date"></div>
         <div>Mostly Cloudy</div>
@@ -120,7 +125,7 @@ const updateWeather = (response) =>{
   <div className="right rounded-[12px] h-full">
     Days of the week
     <Fahrenheit/>
-    <div className="grid grid-cols-6 gap-4 ">
+    <div className="grid ">
         <Daily/>
         </div>
         </div>
