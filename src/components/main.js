@@ -4,6 +4,7 @@ import Dark from './Dark';
 import Fahrenheit from './Fahrenheit';
 import axios from 'axios';
 import Daily from './Daily';
+import WeatherIcon from './WeatherIcon';
 
 function Main(){
     const [currentDay, setCurrentDay] = useState('');
@@ -15,7 +16,7 @@ function Main(){
         temperature: response.data.main.temp,
         humidity: response.data.main.humidity,
         description: response.data.weather[0].description,
-        iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}`,
+        icon: response.data.weather[0].icon,
         wind: response.data.wind.speed,
         city: response.data.name
     });
@@ -112,6 +113,7 @@ const updateWeather = (response) =>{
         <div className="main-content">
         <h1>Weather Forecast</h1>
         <h2 id="city">{weather.location.city}</h2>
+        <WeatherIcon code={props.data.icon} alt={props.data.description}/>
         <img
                   src={weather.iconUrl}
                   className="card-img-top"
