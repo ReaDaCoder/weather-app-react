@@ -10,6 +10,16 @@ function Main(){
     const [time, setTime] = useState('');
     const [city, setCity] = useState('Pretoria');
 
+    const [weather, setWeather] = useState({});
+    setWeather({
+        temperature: response.data.main.temp,
+        humidity: response.data.main.humidity,
+        description: response.data.weather[0].description,
+        iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}`,
+        wind: response.data.wind.speed,
+        city: response.data.name
+    });
+
     useEffect(()=>{
         let now = new Date();
     let hour = now.getHours();
@@ -88,14 +98,6 @@ const updateWeather = (response) =>{
         getCity(userInput.value);
     }
 
-//console.log(form);
-
-    const dailyForecast=(response)=>{
-        let forecast = response.data.daily;
-        let api = "http://api.weatherapi.com/v1/forecast.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes&days=5";
-  let forecastElement = document.querySelector("#forecast");
-    }
-
     return(
     <div className="w-full items-center justify-center p-6">
         <h1>Weather App</h1>
@@ -109,16 +111,14 @@ const updateWeather = (response) =>{
         </form>
         <div className="main-content">
         <h1>Weather Forecast</h1>
-        <h2 id="city"></h2>
+        <h2 id="city">{weather.location.city}</h2>
         <img
-                  src="http://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  class="card-img-top"
+                  src={weather.iconUrl}
+                  className="card-img-top"
                 />
-        <div id="weather-temperature">12</div>
+        <div id="weather-temperature">{temp}</div>
         <div id="date"></div>
-        <div>Mostly Cloudy</div>
+        <div>{weather.data.description}</div>
         <div>Rain</div>
         </div>
   </div>
@@ -132,7 +132,7 @@ const updateWeather = (response) =>{
         <div className="grid grid-cols-3 gap-4">
 
   <div>Humidity
-    <div className="humidity"></div>
+    <div className="humidity">{weather.humidity}</div>
   </div>
   <div className="visibility">Visibility</div>
   <div className="air-quality">Air Quality</div>

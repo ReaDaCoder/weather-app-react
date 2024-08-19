@@ -1,14 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from 'axios';
 
 export default function Daily(){
 let celsiusTemperature = "";
   const getDaily = (response)=>{
     let forecast = response.data.daily
   }
+  const [loaded, setLoaded] = useState(false);
+  const [temperature, setTemperature] = useState(null);
 
+  function getResponse(response){
+    console.log(response);
+    setTemperature(response.data.main.temp);
+    setLoaded(true);
+  }
 
     let apiKey ="64469ac67e6dc941feb5b50915a18dc7"
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(getResponse);
     return(
         <div className="daily">
           <div className="grid grid-cols-6 gap-4 ">
