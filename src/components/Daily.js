@@ -1,8 +1,14 @@
 import React from "react";
 
 export default function Daily(){
+
+  const getDaily = (response)=>{
+    let forecast = response.data.daily
+  }
+
+
     let apiKey ="64469ac67e6dc941feb5b50915a18dc7"
-    let apiUrl = ""
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`
     return(
         <div className="daily">
           <div className="grid grid-cols-6 gap-4 ">
