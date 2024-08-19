@@ -1,10 +1,13 @@
 1. Displaying UI
-2. Create a variables that will display time and dates
-3. Get user's notification as soon as the open the app.
+2.User gets alert that will access their current location.
+3. Initialize variable that will access user input
+  a.The user will be able to enter city
+  b. As user "clicks search", the weather conditions or the searched city will appear on the screen
 4. Create a function that will be responsible displaying current weather conditions
 5. Create a Function that will get weather conditions for weather conditions of other locations
 6. Create a functions that will  get daily weather conditions
 7.Function to switch between celsius and fahrenheit temperature
+  a. Will see two buttons to switch between celsius and farenheit temperatures
 8.Add button to switch between dark and light theme.
 9. Get user's notification as soon as the open the app.
 10. Add local storage to allow user to access info while offline.
