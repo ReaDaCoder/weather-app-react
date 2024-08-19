@@ -3,6 +3,7 @@ import { useState } from "react";
 import Dark from './Dark';
 import Fahrenheit from './Fahrenheit';
 import axios from 'axios';
+import Daily from './Daily';
 
 function Main(){
     const [currentDay, setCurrentDay] = useState('');
@@ -120,35 +121,7 @@ const updateWeather = (response) =>{
     Days of the week
     <Fahrenheit/>
     <div className="grid grid-cols-6 gap-4 ">
-        <div className="bg-white rounded-[12px]">
-            Tue
-        <div className="weather-temp">12</div>
-            </div>
-        <div className="bg-white rounded-[12px]">
-            Wed
-            
-        <div className="weather-temperature">12</div>
-            </div>
-        <div className="bg-white rounded-[12px]">
-            Thurs
-            
-        <div className="weather-temperature">12</div>
-            </div>
-        <div className="bg-white rounded-[12px]">
-            Fri
-            
-        <div className="weather-temperature">12</div>
-            </div>
-        <div className="bg-white rounded-[12px]">
-            Sat
-           
-        <div className="weather-temperature">12</div>
-            </div>
-        <div className="bg-white rounded-[12px]">
-            Sun
-           
-        <div className="weather-temperature">12</div>
-            </div>
+        <Daily/>
         </div>
         </div>
         <div className="grid grid-cols-3 gap-4">
