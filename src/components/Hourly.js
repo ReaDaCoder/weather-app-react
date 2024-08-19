@@ -4,11 +4,14 @@ import axios from 'axios';
 const Hourly = () => {
   const [forecast, setForecast] = useState([]);
 
+  let apiKey = "64469ac67e6dc941feb5b50915a18dc7";
+
+
   useEffect(() => {
-    const fetchWeatherData = async () => {
+    const getData = async () => {
       const key = '4469ac67e6dc941feb5b50915a18dc7';
       const cityId = ''; 
-      const url = `https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&cnt=8&appid=${API_KEY}`;
+      const url = `https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&cnt=8&appid=${key}`;
 
       try {
         const response = await axios.get(url);
@@ -18,7 +21,7 @@ const Hourly = () => {
       }
     };
 
-    fetchWeatherData();
+   getData();
   }, []);
 
   return (
