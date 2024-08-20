@@ -13,17 +13,6 @@ function Main(){
   const [city, setCity] = useState(props.defaultCity);
 
 
-
-    /*const [weather, setWeather] = useState({});
-    setWeather({
-        temperature: response.data.main.temp,
-        humidity: response.data.main.humidity,
-        description: response.data.weather[0].description,
-        icon: response.data.weather[0].icon,
-        wind: response.data.wind.speed,
-        city: response.data.name
-    });*/
-
     useEffect(()=>{
         let now = new Date();
     let hour = now.getHours();
