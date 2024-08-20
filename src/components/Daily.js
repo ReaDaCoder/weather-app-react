@@ -9,6 +9,15 @@ let celsiusTemperature = "";
   const [loaded, setLoaded] = useState(false);
   const [temperature, setTemperature] = useState(null);
 
+  function day() {
+    let date = new Date(props.data.dt * 1000);
+    let day = date.getDay();
+
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    return days[day];
+  }
+
   function getResponse(response){
     console.log(response);
     setTemperature(response.data.main.temp);
@@ -22,64 +31,33 @@ let celsiusTemperature = "";
         <div className="daily">
           <div className="grid grid-cols-6 gap-4 ">
           <div className="bg-white rounded-[12px]">
-            Tue
-            <img
-                  src="http://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  class="card-img-top"
-                />
+          <div className="WeatherForecast-day">{day()}</div>
+            <WeatherIcon code={props.data.weather[0].icon} size={36} />
         <div className="weather-temp">12</div>
             </div>
         <div className="bg-white rounded-[12px]">
             Wed
-            <img
-                  src="http://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  class="card-img-top"
-                />
-            
+            <WeatherIcon code={props.data.weather[0].icon} size={36} />
         <div className="weather-temperature">12</div>
             </div>
         <div className="bg-white rounded-[12px]">
             Thurs
-            <img
-                  src="http://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  class="card-img-top"
-                />
+            <WeatherIcon code={props.data.weather[0].icon} size={36} />
         <div className="weather-temperature">12</div>
             </div>
         <div className="bg-white rounded-[12px]">
             Fri
-            <img
-                  src="http://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  class="card-img-top"
-                />
+            <WeatherIcon code={props.data.weather[0].icon} size={36} />
         <div className="weather-temperature">12</div>
             </div>
         <div className="bg-white rounded-[12px]">
             Sat
-            <img
-                  src="http://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  class="card-img-top"
-                />
+            <WeatherIcon code={props.data.weather[0].icon} size={36} />
         <div className="weather-temperature">12</div>
             </div>
         <div className="bg-white rounded-[12px]">
             Sun
-            <img
-                  src="http://openweathermap.org/img/wn/${
-                    forecastDay.weather[0].icon
-                  }@2x.png"
-                  class="card-img-top"
-                />
+            <WeatherIcon code={props.data.weather[0].icon} size={36} />
         <div className="weather-temperature">12</div>
             </div>
         </div>

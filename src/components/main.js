@@ -9,9 +9,12 @@ import WeatherIcon from './WeatherIcon';
 function Main(){
     const [currentDay, setCurrentDay] = useState('');
     const [time, setTime] = useState('');
-    const [city, setCity] = useState('Pretoria');
+    const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
-    const [weather, setWeather] = useState({});
+
+
+    /*const [weather, setWeather] = useState({});
     setWeather({
         temperature: response.data.main.temp,
         humidity: response.data.main.humidity,
@@ -19,7 +22,7 @@ function Main(){
         icon: response.data.weather[0].icon,
         wind: response.data.wind.speed,
         city: response.data.name
-    });
+    });*/
 
     useEffect(()=>{
         let now = new Date();
@@ -72,14 +75,15 @@ axios.get(apiUrl).then(console.log(response));
 
 let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes`;
 
-const updateWeather = (response) =>{
+/*const updateWeather = (response) =>{
     let weatherTemp = document.querySelector("#weather-temperature");
     let temp = response.data.current.temp_c;
     console.log(weatherTemp);
     console.log(response);
     weatherTemp.innerHTML = temp;
     console.log(weatherTemp);
-}
+}*/
+
 
 
     const getCity = (city)=>{
@@ -88,6 +92,20 @@ const updateWeather = (response) =>{
         console.log(url);
         axios.get(url).then(updateWeather).catch((error)=>console.log(error));
     }
+
+    function getResponse(response) {
+        setWeatherData({
+          ready: true,
+          coordinates: response.data.coord,
+          temperature: response.data.main.temp,
+          humidity: response.data.main.humidity,
+          date: new Date(response.data.dt * 1000),
+          description: response.data.weather[0].description,
+          icon: response.data.weather[0].icon,
+          wind: response.data.wind.speed,
+          city: response.data.name,
+        });
+      }
 
 
     const searchButton = (event) =>{
