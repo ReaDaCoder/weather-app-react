@@ -9,16 +9,18 @@ import WeatherIcon from './WeatherIcon';
 function Main(){
     const [currentDay, setCurrentDay] = useState('');
     const [time, setTime] = useState('');
+    const [temperature, setTemperature]= useState("");
     const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState();
 
+
+  setTemperature(response.data.main.temp);
 
     useEffect(()=>{
         let now = new Date();
     let hour = now.getHours();
     let minutes = now.getMinutes();
     let days = ["Sunday","Monday", "Tuesday", "Wednsday", "Friday", "Saturday"];
-    console.dir(now);
     
     let currentDay = days[now.getDay()];
     console.log(currentDay);
@@ -27,8 +29,6 @@ function Main(){
     },[]);
 
     useEffect(()=>{
-
-        
         let form = document.querySelector("#search-form");
         console.log(form);
         form.addEventListener("submit", searchButton);
@@ -40,46 +40,25 @@ function Main(){
     },[]);
 
 
-    let apiUrl = "http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Lagos&aqi=yes";
+    let apiUrl = "";
 
     const currentLocation =(response) =>{
-        console.log("response", response.coords.latitude);
         let latitude = response.coords.latitude;
   let longitude = response.coords.longitude;
-  //console.log(longitude);
-  let apiKey = "58ba20b08f854e3da23163958241108";
-  let apiPoint = "http://api.weatherapi.com/v1/current.json";
-  let apiUrl = `${apiPoint}?key=${apiKey}&q=${latitude},${longitude}`;
-
+  let apiKey = "5d7b9ccc3e46361f64b317d8161bb16e";
+  let apiPoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiUrl = `${apiPoint}lat=${latitude}&lon${longitude}&appid=${apiKey}`;
   let currentTemperature = document.querySelector(".weather-temperature");
-  //currentTemperature.innerHTML = response.current.temp_c;
-//"http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=-25.75,28.19"
 axios.get(apiUrl).then(console.log(response));
     }
     navigator.geolocation.getCurrentPosition(currentLocation);
 
 
-    let getInput = document.querySelector(".search-input");
-    let key = "58ba20b08f854e3da23163958241108";
-
-let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da23163958241108&q=Pretoria&aqi=yes`;
-
-/*const updateWeather = (response) =>{
-    let weatherTemp = document.querySelector("#weather-temperature");
-    let temp = response.data.current.temp_c;
-    console.log(weatherTemp);
-    console.log(response);
-    weatherTemp.innerHTML = temp;
-    console.log(weatherTemp);
-}*/
-
-
 
     const getCity = (city)=>{
-        let key = "58ba20b08f854e3da23163958241108";
-        let url = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=yes`;
-        console.log(url);
-        axios.get(url).then(updateWeather).catch((error)=>console.log(error));
+        let key = "5d7b9ccc3e46361f64b317d8161bb16e";
+        let url = ``;
+        axios.get(url).then(getResponse).catch((error)=>console.log(error));
     }
 
     function getResponse(response) {
@@ -88,7 +67,6 @@ let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da231639
           coordinates: response.data.coord,
           temperature: response.data.main.temp,
           humidity: response.data.main.humidity,
-          date: new Date(response.data.dt * 1000),
           description: response.data.weather[0].description,
           icon: response.data.weather[0].icon,
           wind: response.data.wind.speed,
@@ -101,7 +79,7 @@ let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da231639
         event.preventDefault();
         let userInput = document.querySelector("#search-input")
         let h2 = document.querySelector("#city");
-        setCity(getInput); 
+        setCity(userInput); 
        h2.innerHTML = `${userInput.value}`;
         getCity(userInput.value);
     }
@@ -119,7 +97,7 @@ let url = `http://api.weatherapi.com/v1/current.json?key=58ba20b08f854e3da231639
         </form>
         <div className="main-content">
         <h1>Weather Forecast</h1>
-        <h2 id="city">{weather.location.city}</h2>
+        <h2 id="city">{temperature}</h2>
         <WeatherIcon code={props.data.icon} alt={props.data.description}/>
         <img
                   src={weather.iconUrl}
