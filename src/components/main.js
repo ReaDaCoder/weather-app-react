@@ -19,7 +19,6 @@ function Main() {
         let hour = now.getHours();
         let minutes = now.getMinutes();
         let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Friday", "Saturday"];
-
         let currentDay = days[now.getDay()];
         console.log(currentDay);
         let date = document.getElementById('date');
@@ -51,7 +50,7 @@ function Main() {
         });
 
         setTemperature(response.data.main.temp);
-    } // Closed the getResponse function
+    }
 
     // const getCity = (city) => {
     //     let key = "5d7b9ccc3e46361f64b317d8161bb16e";
@@ -88,7 +87,7 @@ function Main() {
                                 className="card-img-top"
                             />
                             <div id="weather-temperature">{weatherData.temperature}</div>
-                            <div id="date"></div>
+                            <div id="date">{currentDay}, {hour}:${minutes}</div>
                             <div>{weatherData.description}</div>
                             <div>Rain</div>
                         </div>
