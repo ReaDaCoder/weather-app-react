@@ -1,40 +1,35 @@
-import React, { useEffect } from 'react';
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import Dark from './Dark';
 import Fahrenheit from './Fahrenheit';
 import axios from 'axios';
-import Daily from './Daily';
 import WeatherIcon from './WeatherIcon';
 
 function Main() {
     const [currentDay, setCurrentDay] = useState('');
-    const [time, setTime] = useState('');
+    const [hour, setHour] = useState('');
+    const [minutes, setMinutes] = useState('');
     const [temperature, setTemperature] = useState(null);
-
     const [weatherData, setWeatherData] = useState({ ready: false });
-    // const [city, setCity] = useState();
 
     useEffect(() => {
         let now = new Date();
-        let hour = now.getHours();
-        let minutes = now.getMinutes();
-        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Friday", "Saturday"];
-        let currentDay = days[now.getDay()];
-        console.log(currentDay);
-        let date = document.getElementById('date');
-        date.innerHTML = `${currentDay}, ${hour}:${minutes}`;
-        console.log(hour);
+        setHour(now.getHours());
+        setMinutes(now.getMinutes());
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        setCurrentDay(days[now.getDay()]);
     }, []);
 
     useEffect(() => {
         let form = document.querySelector("#search-form");
-        console.log(form);
-        form.addEventListener("submit", searchButton);
-
-        return () => {
-            form.removeEventListener("submit", searchButton);
+        if (form) {
+            form.addEventListener("submit", searchButton);
         }
 
+        return () => {
+            if (form) {
+                form.removeEventListener("submit", searchButton);
+            }
+        }
     }, []);
 
     function getResponse(response) {
@@ -53,17 +48,11 @@ function Main() {
         setTemperature(response.data.main.temp);
     }
 
-    // const getCity = (city) => {
-    //     let key = "5d7b9ccc3e46361f64b317d8161bb16e";
-    //     let url = ``;
-    //     axios.get(url).then(getResponse).catch((error) => console.log(error));
-    // }
-
     const searchButton = (event) => {
         event.preventDefault();
         let userInput = document.querySelector("#search-input");
         let h2 = document.querySelector("#city");
-        // setCity(userInput); 
+        // setCity(userInput.value); 
         //h2.innerHTML = `${userInput.value}`;
         // getCity(userInput.value);
     }
@@ -88,9 +77,9 @@ function Main() {
                                 className="card-img-top"
                             />
                             <div id="weather-temperature">{weatherData.temperature}</div>
-                            <div id="date">{currentDay}, {hour}:${minutes}</div>
+                            <div id="date">{currentDay}, {hour}:{minutes}</div>
                             <div>{weatherData.description}</div>
-                            <div>Rain</div>
+                            <div></div>
                         </div>
                     </div>
                     <div className="right rounded-[12px] h-full">
@@ -121,17 +110,3 @@ function Main() {
 } 
 
 export default Main;
-
-
-/*const currentLocation =(response) =>{
-        let latitude = response.coords.latitude;
-  let longitude = response.coords.longitude;
-  let apiKey = "5d7b9ccc3e46361f64b317d8161bb16e";
-  let apiPoint = "https://api.openweathermap.org/data/2.5/weather?";
-  let apiUrl = `${apiPoint}lat=${latitude}&lon${longitude}&appid=${apiKey}`;
-  let currentTemperature = document.querySelector(".weather-temperature");
-axios.get(apiUrl).then(console.log(response));
-    }
-<WeatherIcon code={props.data.icon} alt={props.data.description}/>
-    navigator.geolocation.getCurrentPosition(currentLocation);
-*/
