@@ -23,6 +23,7 @@ function Main() {
         console.log(currentDay);
         let date = document.getElementById('date');
         date.innerHTML = `${currentDay}, ${hour}:${minutes}`;
+        console.log(hour);
     }, []);
 
     useEffect(() => {
@@ -96,7 +97,7 @@ function Main() {
                         Days of the week
                         <Fahrenheit />
                         <div className="grid">
-                            <Daily />
+                        
                         </div>
                     </div>
                     <div className="grid grid-cols-3 gap-4">

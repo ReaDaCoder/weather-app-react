@@ -22,7 +22,7 @@ export default function WeatherIcon(props){
         "50d": "FOG",
         "50n": "FOG",
       };
-    return(
+    /*return(
         <div className="icons">
             <ReactAnimatedWeather
             icon={iconMap[props.code]}
@@ -35,5 +35,5 @@ export default function WeatherIcon(props){
                   className="card-img-top"
                 />
         </div>
-    )
+    )*/
 }
