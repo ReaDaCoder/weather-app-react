@@ -3,6 +3,7 @@ import Dark from "./Dark";
 import Fahrenheit from "./Fahrenheit";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
+import Daily from "./Daily";
 
 function Main() {
   const [currentDay, setCurrentDay] = useState("");
@@ -76,19 +77,27 @@ function Main() {
               <div id="date">{currentDay}, {hour}:{minutes < 10 ? `0${minutes}` : minutes}</div>
               <div>{weatherData.description}</div>
             </div>
-          </div>
-          <div className="right rounded-[12px] h-full">
-            Days of the week
-            <Fahrenheit />
-            <div className="grid"></div>
-          </div>
-          <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4">
             <div>Humidity
               <div className="humidity">{weatherData.humidity}%</div>
             </div>
             <div className="visibility">Visibility</div>
             <div className="air-quality">Air Quality</div>
           </div>
+          </div>
+          <div className="right rounded-[12px] h-full">
+            Days of the week
+            <Fahrenheit />
+            <Daily city={city} />
+            <div className="grid"></div>
+          </div>
+          {/* <div className="grid grid-cols-3 gap-4">
+            <div>Humidity
+              <div className="humidity">{weatherData.humidity}%</div>
+            </div>
+            <div className="visibility">Visibility</div>
+            <div className="air-quality">Air Quality</div>
+          </div> */}
         </div>
       </div>
     );
