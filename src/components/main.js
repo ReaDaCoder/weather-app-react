@@ -69,8 +69,10 @@ function Main() {
               <button type="submit" className="searchBtn">Search</button>
             </form>
             <div className="main-content">
-              <h1>Weather Forecast</h1>
-              <h2 id="city">{weatherData.city}</h2>
+              <h2>Weather Forecast</h2>
+              <span>
+              <h3 id="city">{weatherData.city}</h3>
+              </span>
               <WeatherIcon />
               <img src={weatherData.icon} alt={weatherData.description} className="card-img-top" />
               <div id="weather-temperature">{Math.round(weatherData.temperature)}°C</div>
@@ -86,9 +88,11 @@ function Main() {
           </div>
           </div>
           <div className="right rounded-[12px] h-full">
-            Days of the week
+            <h3>Days of the week</h3>
             <Fahrenheit />
+            <div className="daily">
             <Daily city={city} />
+            </div>
             <div className="grid"></div>
           </div>
         </div>
