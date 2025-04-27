@@ -54,23 +54,35 @@ const Hourly = () => {
     setTemperature(response.data.main.temp);
   }
 
+  let popup = document.getElementById("popup");
+
+  function hideHourlyForecast(){
+    popup.classList.remove("display-hourly")
+  }
+
   return (
-    <div>
-      <h2>24-Hour Weather Forecast</h2>
-      <div>
-        {forecast.map((hour, index) => (
-          <div key={index}>
-            <p>Time: {new Date(hour.dt * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</p>
-            <p>Temperature: {Math.round(hour.main.temp)}°C</p>
-            <p>Weather: {hour.weather[0].description}</p>
-            <img
-              src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
-              alt={hour.weather[0].description}
-            />
-          </div>
-        ))}
+    <div className="hourly" id="popup">
+  <div className="grid grid-cols-6 gap-4">
+    {forecast.map((hour, index) => (
+      <div key={index} className="bg-white rounded-[12px] p-4">
+        <div className="WeatherForecast-hour">
+          {/* Format the time nicely */}
+          {new Date(hour.dt * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+        </div>
+
+        <img
+          src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
+          alt={hour.weather[0].description}
+        />
+
+        <div className="weather-temperature">
+          {Math.round(hour.main.temp)}°C
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+  <div className="hide"  onClick={hideHourlyForecast}>Hide</div>
+</div>
   );
 };
 

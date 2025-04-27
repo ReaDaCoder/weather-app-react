@@ -12,10 +12,10 @@ export default function Daily(props) {
 
       axios.get(apiUrl).then(getResponse);
     }
-  }, [props.city]); // Runs when props.city changes
+  }, [props.city]); 
 
   function getResponse(response) {
-    setForecast(response.data.list.filter((reading, index) => index % 8 === 0)); // Filter daily data
+    setForecast(response.data.list.filter((reading, index) => index % 8 === 0));
     setLoaded(true);
   }
 

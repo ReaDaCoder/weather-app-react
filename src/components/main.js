@@ -69,6 +69,16 @@ function Main() {
     }
   }
 
+  let popup = document.getElementById("popup");
+
+  function displayHourlyForecast(){
+    popup.classList.add("display-hourly")
+  }
+
+  function hideHourlyForecast(){
+    popup.classList.remove("display-hourly")
+  }
+
   if (weatherData.ready) {
     return (
       <div className="w-full items-center justify-center p-6">
@@ -76,7 +86,7 @@ function Main() {
         <div className="top-buttons">
           {" "}
           <Dark />
-          <div className="hourly-weather">Hourly</div>
+          <div className="hourly-weather" onClick={displayHourlyForecast}>Hourly</div>
         </div>
         <div className="grid h-full w-full grid-cols-2 gap-2 rounded-[12px]">
           <div className="left rounded-[12px] h-full">
