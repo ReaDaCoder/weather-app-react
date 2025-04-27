@@ -4,6 +4,7 @@ import Fahrenheit from "./Fahrenheit";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
 import Daily from "./Daily";
+import Hourly from "./Hourly";
 
 function Main() {
   const [currentDay, setCurrentDay] = useState("");
@@ -19,7 +20,15 @@ function Main() {
     let now = new Date();
     setHour(now.getHours());
     setMinutes(now.getMinutes());
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
     setCurrentDay(days[now.getDay()]);
   }, []);
 
@@ -29,9 +38,12 @@ function Main() {
 
   function fetchWeather(city) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(getResponse).catch((error) => {
-      console.error("Error fetching weather:", error);
-    });
+    axios
+      .get(apiUrl)
+      .then(getResponse)
+      .catch((error) => {
+        console.error("Error fetching weather:", error);
+      });
   }
 
   function getResponse(response) {
@@ -61,41 +73,62 @@ function Main() {
     return (
       <div className="w-full items-center justify-center p-6">
         <h1>Weather App</h1>
-        <Dark />
+        <div className="top-buttons">
+          {" "}
+          <Dark />
+          <div className="hourly-weather">Hourly</div>
+        </div>
         <div className="grid h-full w-full grid-cols-2 gap-2 rounded-[12px]">
           <div className="left rounded-[12px] h-full">
             <form id="search-form" onSubmit={handleSearch}>
-              <input className="search-input" id="search-input" type="text" placeholder="Search" />
-              <button type="submit" className="searchBtn">Search</button>
+              <input
+                className="search-input"
+                id="search-input"
+                type="text"
+                placeholder="Search"
+              />
+              <button type="submit" className="searchBtn">
+                Search
+              </button>
             </form>
             <div className="main-content">
               <h2>Weather Forecast</h2>
               <span>
-              <h3 id="city">{weatherData.city}</h3>
+                <h3 id="city">{weatherData.city}</h3>
               </span>
               <WeatherIcon />
-              <img src={weatherData.icon} alt={weatherData.description} className="card-img-top" />
-              <div id="weather-temperature">{Math.round(weatherData.temperature)}°C</div>
-              <div id="date">{currentDay}, {hour}:{minutes < 10 ? `0${minutes}` : minutes}</div>
+              <img
+                src={weatherData.icon}
+                alt={weatherData.description}
+                className="card-img-top"
+              />
+              <div id="weather-temperature">
+                {Math.round(weatherData.temperature)}°C
+              </div>
+              <div id="date">
+                {currentDay}, {hour}:{minutes < 10 ? `0${minutes}` : minutes}
+              </div>
               <div>{weatherData.description}</div>
             </div>
             <div className="grid grid-cols-3 gap-4">
-            <div>Humidity
-              <div className="humidity">{weatherData.humidity}%</div>
+              <div>
+                Humidity
+                <div className="humidity">{weatherData.humidity}%</div>
+              </div>
+              <div className="visibility">Visibility</div>
+              <div className="air-quality">Air Quality</div>
             </div>
-            <div className="visibility">Visibility</div>
-            <div className="air-quality">Air Quality</div>
-          </div>
           </div>
           <div className="right rounded-[12px] h-full">
             <h3>Days of the week</h3>
             <Fahrenheit />
             <div className="daily">
-            <Daily city={city} />
+              <Daily city={city} />
             </div>
             <div className="grid"></div>
           </div>
         </div>
+        <Hourly/>
       </div>
     );
   } else {
@@ -104,5 +137,3 @@ function Main() {
 }
 
 export default Main;
-
-
