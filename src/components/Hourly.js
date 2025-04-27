@@ -6,30 +6,31 @@ const Hourly = () => {
   const apiKey = "64469ac67e6dc941feb5b50915a18dc7";
   const [temperature, setTemperature] = useState(null);
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("London");
+
 
   useEffect(() => {
-    const getData = async () => {
-      const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=8&appid=${apiKey}`;
-
-      try {
-        const response = await axios.get(url);
-        setForecast(response.data.list);
-      } catch (error) {
-        console.error("Error fetching the weather data:", error);
-      }
-    };
-
-    getData();
-  }, []);
-
-   useEffect(() => {
+    if (city) {
+      fetchForecast(city); 
       fetchWeather(city);
-    }, [city]); 
+    }
+  }, [city]);
 
-    
+  function fetchForecast(city) {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=8&appid=${apiKey}`;
+    axios
+      .get(url)
+      .then((response) => {
+        setForecast(response.data.list);
+      })
+      .catch((error) => {
+        console.error("Error fetching the forecast data:", error);
+      });
+  }
+
   function fetchWeather(city) {
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
     axios
       .get(apiUrl)
       .then(getResponse)
