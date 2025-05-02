@@ -62,9 +62,10 @@ const Hourly = () => {
 
   return (
     <div className="hourly" id="popup">
+      <h4>Hourly Forecast</h4>
   <div className="grid grid-cols-6 gap-4">
     {forecast.map((hour, index) => (
-      <div key={index} className="bg-white rounded-[12px] p-4">
+      <div key={index} className="bg-white rounded-[12px] p-4 hour">
         <div className="WeatherForecast-hour">
           {/* Format the time nicely */}
           {new Date(hour.dt * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}

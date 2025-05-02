@@ -88,7 +88,7 @@ function Main() {
           <Dark />
           <div className="hourly-weather" onClick={displayHourlyForecast}>Hourly</div>
         </div>
-        <div className="grid h-full w-full grid-cols-2 gap-2 rounded-[12px]">
+        <div className="grid h-full w-full grid-cols-2 gap-2 rounded-[12px] pair">
           <div className="left rounded-[12px] h-full">
             <form id="search-form" onSubmit={handleSearch}>
               <input
@@ -102,7 +102,7 @@ function Main() {
               </button>
             </form>
             <div className="main-content">
-              <h2>Weather Forecast</h2>
+              {/* <h2>Weather Forecast</h2> */}
               <span>
                 <h3 id="city">{weatherData.city}</h3>
               </span>
@@ -115,18 +115,24 @@ function Main() {
               <div id="weather-temperature">
                 {Math.round(weatherData.temperature)}°C
               </div>
-              <div id="date">
+              <div className="date" id="date">
                 {currentDay}, {hour}:{minutes < 10 ? `0${minutes}` : minutes}
               </div>
-              <div>{weatherData.description}</div>
+              <div className="description">{weatherData.description}</div>
             </div>
             <div className="grid grid-cols-3 gap-4">
-              <div>
-                Humidity
+              <div className="condition">
+                <h5>Humidity</h5>
                 <div className="humidity">{weatherData.humidity}%</div>
               </div>
-              <div className="visibility">Visibility</div>
-              <div className="air-quality">Air Quality</div>
+              <div className="condition">
+                <h5>Visibility</h5>
+                <div className="visibility">{weatherData.humidity}%</div>
+                </div>
+              <div className="condition">
+                <h5>Air Quality</h5>
+                <div className="quality">{weatherData.humidity}%</div>
+                </div>
             </div>
           </div>
           <div className="right rounded-[12px] h-full">
@@ -138,7 +144,7 @@ function Main() {
             <div className="grid"></div>
           </div>
         </div>
-        <Hourly/>
+        <dic className="hour-data"> <Hourly/></dic>
       </div>
     );
   } else {
