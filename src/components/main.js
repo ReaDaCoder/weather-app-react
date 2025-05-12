@@ -13,8 +13,10 @@ function Main() {
   const [temperature, setTemperature] = useState(null);
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("London"); // Default city
-
-  const apiKey = "5d7b9ccc3e46361f64b317d8161bb16e";
+  
+  const apiKey = process.env.REACT_APP_API_URL;
+  // const apiKey = import.meta.env.VITE_API_URL;
+  // const apiKey = "5d7b9ccc3e46361f64b317d8161bb16e";
 
   useEffect(() => {
     let now = new Date();

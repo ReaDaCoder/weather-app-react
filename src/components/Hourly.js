@@ -3,7 +3,8 @@ import axios from "axios";
 
 const Hourly = () => {
   const [forecast, setForecast] = useState([]);
-  const apiKey = "64469ac67e6dc941feb5b50915a18dc7";
+  // const apiKey = "64469ac67e6dc941feb5b50915a18dc7";
+  const apiKey = process.env.REACT_APP_SCND_URL;
   const [temperature, setTemperature] = useState(null);
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("London");
